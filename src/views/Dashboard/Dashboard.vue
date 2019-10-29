@@ -26,11 +26,13 @@
   </div>
 </template>
 <script>
+import RouteBreadCrumb from '@/components/Breadcrumb/RouteBreadcrumb';
 import SearchAhead from '@/components/SearchAhead';
 
 export default {
   components: {
-    SearchAhead
+    RouteBreadCrumb,
+    SearchAhead,
   }
 };
 </script>

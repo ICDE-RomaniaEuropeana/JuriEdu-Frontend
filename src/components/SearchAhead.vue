@@ -1,9 +1,9 @@
 <template>
   <vue-bootstrap-typeahead
-    :data="questions"
+    :data="results"
     v-model="search"
     size="lg"
-    :serializer="s => s.text"
+    :serializer="s => s.title"
     placeholder="Vreau să știu despre..."
     @hit="selectedQuestion = $event"
   />
@@ -12,7 +12,7 @@
 import VueBootstrapTypeahead from 'vue-bootstrap-typeahead'
 import _ from 'underscore'
 
-const API_URL = `https://${process.env.ES_API_ENDPOINT}?query=:query`
+const API_URL = `https://${process.env.VUE_APP_ES_API_ENDPOINT}?query=:query`
 
 export default {
   name: 'search-ahead',
@@ -23,7 +23,7 @@ export default {
 
   data() {
     return {
-      questions: [],
+      results: [],
       search: '',
       selectedQuestion: null
     }
@@ -33,13 +33,12 @@ export default {
     async autocomplete(query) {
       const res = await fetch(API_URL.replace(':query', query))
       const suggestions = await res.json()
-      this.question = suggestions.suggestions
+      this.results = suggestions;
     }
   },
 
   watch: {
-    addressSearch: _.debounce(function(addr) { this.autocomplete(addr) },
-      500)
+    search: _.debounce(function(value) { this.autocomplete(value) }, 500)
   }
 }
 </script>
