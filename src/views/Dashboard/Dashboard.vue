@@ -17,10 +17,21 @@
         </div>
         <div class="card-body">
           <form>
-            <search-ahead />
+            <search-ahead v-model="selected" />
           </form>
         </div>
       </div>
+
+      <transition name="slide-fade">
+        <div class="card mb-4" v-if="selected">
+          <div class="card-header">
+            <h3 class="mb-0">Rezultate</h3>
+          </div>
+          <div class="card-body">
+            <p v-show="selected">{{ selected.message }}</p>
+          </div>
+        </div>
+      </transition>
     </div>
 
   </div>
@@ -33,7 +44,13 @@ export default {
   components: {
     RouteBreadCrumb,
     SearchAhead,
-  }
+  },
+
+  data() {
+    return {
+      selected: null,
+    }
+  },
 };
 </script>
 <style></style>
