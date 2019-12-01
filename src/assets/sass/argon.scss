@@ -79,3 +79,5 @@
   transform: translateX(10px);
   opacity: 0;
 }
+
+@include bg-variant(".bg-yellow", #FECE22);

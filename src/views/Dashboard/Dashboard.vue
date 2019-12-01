@@ -25,10 +25,10 @@
       <transition name="slide-fade">
         <div class="card mb-4" v-if="selected">
           <div class="card-header">
-            <h3 class="mb-0">Rezultate</h3>
+            <h3 class="mb-0">{{ selected.chapter }}</h3>
           </div>
           <div class="card-body">
-            <p v-show="selected">{{ selected.message }}</p>
+            <div v-show="selected" v-html="selected.answer"></div>
           </div>
         </div>
       </transition>
