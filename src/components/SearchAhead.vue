@@ -1,15 +1,17 @@
 <template>
   <div class="search-ahead">
-    <vue-bootstrap-typeahead
-      :data="questions"
-      v-model="search"
-      size="lg"
-      :serializer="serialize"
-      :value="value"
-      placeholder="Vreau să știu despre..."
-      @hit="setSelected($event)"
+    <form @submit="formAction">
+      <vue-bootstrap-typeahead
+        :data="questions"
+        v-model="search"
+        size="lg"
+        :serializer="serialize"
+        :value="value"
+        placeholder="Vreau să știu despre..."
+        @hit="setSelected($event)"
       />
       <i v-if="loading" class="fas fa-spinner fa-spin"></i>
+    </form>
   </div>
 </template>
 <script>
@@ -48,16 +50,19 @@ export default {
     },
     async fullSearch(query) {
       const res = await fetch(`${API_URL}/question/search?search=:query`.replace(':query', query), {mode: 'cors'})
-      const suggestions = await res.json()
-      this.results = suggestions
+      this.selected = await res.json()
       this.loading = false
     },
     serialize(entry) {
       return entry.label
     },
     setSelected(event) {
-      this.selected = this.results[event.id]
+      this.selected = [this.results[event.id]]
     },
+    formAction(event) {
+      this.fullSearch(this.search)
+      event.preventDefault();
+    }
   },
 
   watch: {
