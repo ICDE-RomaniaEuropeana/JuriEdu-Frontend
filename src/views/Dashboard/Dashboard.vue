@@ -26,13 +26,12 @@
             <h3 class="mb-0">Rezultate</h3>
           </div>
           <div class="card-body">
-            <div v-show="selected">
-              <template v-for="result, idx in selected">
-                <h3><span v-for="question, idx in result.questions">{{ question }}<br v-if="idx < (result.questions.length - 1)"/></span></h3>
-                <div v-html="result.answer"></div>
-                <hr v-if="idx < (selected.length -1)">
-              </template>
+            <div v-for="(result, idx) in selected" v-bind:key="idx" v-show="selected">
+              <h3><span v-for="(question, qi) in result.questions" v-bind:key="qi">{{ question }}<br v-if="qi < (result.questions.length - 1)"/></span></h3>
+              <div v-html="result.answer"></div>
+              <hr v-if="idx < (selected.length -1)">
             </div>
+            <h3 class="text-center">Ne pare rău, nu s-au găsit rezultate pentru căutarea ta :(</h3>
           </div>
         </div>
       </transition>
