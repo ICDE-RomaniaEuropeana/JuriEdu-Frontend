@@ -27,7 +27,11 @@
           </div>
           <div class="card-body">
             <div v-show="selected">
-              <div v-for="result in selected" v-html="result.answer"></div>
+              <template v-for="result, idx in selected">
+                <h3><span v-for="question, idx in result.questions">{{ question }}<br v-if="idx < (result.questions.length - 1)"/></span></h3>
+                <div v-html="result.answer"></div>
+                <hr v-if="idx < (selected.length -1)">
+              </template>
             </div>
           </div>
         </div>
@@ -54,6 +58,8 @@ export default {
 };
 </script>
 <style lang="scss">
+$highlight-color: rgba(255, 246, 219, 0.65);
+
 .alert-block {
   margin-top: 2.5rem;
   
@@ -68,9 +74,13 @@ export default {
   .alert-text {
     margin-top: 1rem;
   }
+
+  .highlight {
+    background-color: rgba($highlight-color, .15);
+  }
 }
 
 .highlight {
-  background-color: rgba(255, 246, 219, 0.65);
+  background-color: $highlight-color;
 }
 </style>
