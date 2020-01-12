@@ -1,5 +1,6 @@
 import DashboardLayout from '@/views/Layout/DashboardLayout.vue';
-const Dashboard = () => import(/* webpackChunkName: "pages" */ '@/views/Dashboard/Dashboard.vue');
+const Home = () => import(/* webpackChunkName: "pages" */ '@/views/Pages/Home.vue');
+const Dictionary = () => import(/* webpackChunkName: "pages" */ '@/views/Pages/Dictionary.vue');
 
 // GeneralViews
 import NotFound from '@/views/GeneralViews/NotFoundPage.vue';
@@ -12,8 +13,13 @@ const routes = [
     children: [
       {
         path: '/index',
-        name: 'Home',
-        component: Dashboard,
+        name: 'Caută',
+        component: Home,
+      },
+      {
+        path: '/dictionar',
+        name: 'Dicționar',
+        component: Dictionary,
       },
     ],
   },

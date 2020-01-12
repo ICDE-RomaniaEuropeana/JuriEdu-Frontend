@@ -3,6 +3,8 @@
     <notifications></notifications>
     <side-bar>
       <template slot-scope="props" slot="links">
+        <sidebar-item :link="{ name: 'Caută', icon: 'ni ni-single-copy-04 text-pink', path: '/index' }"></sidebar-item>
+        <sidebar-item :link="{ name: 'Dicționar', icon: 'ni ni-archive-2 text-green', path: '/dictionar' }"></sidebar-item>
       </template>
 
       <template slot="links-after">
