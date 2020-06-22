@@ -1,6 +1,7 @@
 import DashboardLayout from '@/views/Layout/DashboardLayout.vue';
 const Home = () => import(/* webpackChunkName: "pages" */ '@/views/Pages/Home.vue');
 const Dictionary = () => import(/* webpackChunkName: "pages" */ '@/views/Pages/Dictionary.vue');
+const Test = () => import(/* webpackChunkName: "pages" */ '@/views/Pages/Test.vue');
 
 // GeneralViews
 import NotFound from '@/views/GeneralViews/NotFoundPage.vue';
@@ -20,6 +21,11 @@ const routes = [
         path: '/dictionar',
         name: 'Dicționar',
         component: Dictionary,
+      },
+      {
+        path: '/teste/:id',
+        name: 'Test',
+        component: Test,
       },
     ],
   },

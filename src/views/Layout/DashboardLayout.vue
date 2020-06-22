@@ -5,6 +5,10 @@
       <template slot-scope="props" slot="links">
         <sidebar-item :link="{ name: 'Caută', icon: 'ni ni-single-copy-04 text-pink', path: '/index' }"></sidebar-item>
         <sidebar-item :link="{ name: 'Dicționar', icon: 'ni ni-archive-2 text-green', path: '/dictionar' }"></sidebar-item>
+        <sidebar-item :link="{ name: 'Teste', icon: 'ni ni-paper-diploma text-blue' }">
+          <sidebar-item :link="{ name: 'Test 1', path: '/teste/1' }"></sidebar-item>
+          <sidebar-item :link="{ name: 'Test 2', path: '/teste/2' }"></sidebar-item>
+        </sidebar-item>
       </template>
 
       <template slot="links-after">
